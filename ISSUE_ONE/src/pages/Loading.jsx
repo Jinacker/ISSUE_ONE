@@ -4,7 +4,7 @@ import React from 'react'
 
 const Loading = () => {
     return(
-        <div>Loading_PAGE</div>
+        <div>로딩 중입니다...</div>
     )
 }
 

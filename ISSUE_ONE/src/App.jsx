@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 import {Routes, Route, Link, useNavigate} from 'react-router-dom'
+import { useState } from 'react'
+import {AiOutlineSmile} from "react-icons/ai"; // 리액트 아이콘 
 
 import './App.css'
 import Home from './pages/Home'
@@ -18,24 +20,30 @@ function App() {
     nav("/search");
   }
 
-  return (
-    // Search 링크의 q? = REACT => 이거 임시용
-    <>
-    <div>
-      <Link to = {"/"}>Home</Link>
-      <Link to = {"/load"}>Load</Link>
-      <Link to = {"/search?q=React"}>Search</Link>
+   const [query, setQuery] = useState(""); // 검색어 상태
 
+  const onSearchSubmit = (e) => {
+    e.preventDefault(); // 기본 폼 전송 막기
+    if (query.trim()) {
+      nav(`/search?q=${encodeURIComponent(query)}`); // 쿼리스트링 붙여서 이동
+    }
+  };
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/load" element={<Loading />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="*" element={<Notfound />} />
+      </Routes>
+
+      
+    <div className = "flex h-20 text-lg justify-center items-center">
+      All rights reserved.  <AiOutlineSmile></AiOutlineSmile>
     </div>
-    <button onClick ={onClickButton}>Search 페이지로 이동</button>
-    <Routes>
-      <Route path = "/" element = {<Home></Home>}></Route>
-      <Route path = "/load" element = {<Loading></Loading>}></Route>
-      <Route path = "/search" element = {<Search></Search>}></Route>
-      <Route path = "*" element = {<Notfound></Notfound>}></Route>
-    </Routes>
     </>
-  )
+  );
 }
 
 export default App

@@ -4,7 +4,7 @@ import React from 'react'
 
 const Notfound = () => {
     return(
-        <div>잘못된 접근입니다.</div>
+        <div>404- 페이지를 찾을 수 없습니다.</div>
     )
 }
 
