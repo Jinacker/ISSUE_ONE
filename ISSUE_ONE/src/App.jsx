@@ -19,11 +19,13 @@ function App() {
   }
 
   return (
+    // Search 링크의 q? = REACT => 이거 임시용
     <>
     <div>
       <Link to = {"/"}>Home</Link>
       <Link to = {"/load"}>Load</Link>
-      <Link to = {"/search"}>Search</Link>
+      <Link to = {"/search?q=React"}>Search</Link>
+
     </div>
     <button onClick ={onClickButton}>Search 페이지로 이동</button>
     <Routes>
