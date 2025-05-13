@@ -37,11 +37,6 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
-
-      
-    <div className = "flex h-20 text-lg justify-center items-center">
-      All rights reserved.  <AiOutlineSmile></AiOutlineSmile>
-    </div>
     </>
   );
 }
