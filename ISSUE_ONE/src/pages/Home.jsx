@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { AiOutlineSmile } from 'react-icons/ai';
+import Header from '../components/Header';
 
 const pressOptions = ['조선일보', '한겨레', '중앙일보', '경향신문', '한국일보'];
 const categoryOptions = ['정치', '경제', '사회', '국제', 'IT', '문화', '스포츠'];
