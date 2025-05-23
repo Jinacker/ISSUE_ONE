@@ -8,7 +8,6 @@ const ToggleButton = styled.button`
   right: 1rem;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
 
   background-color: ${({ theme }) => theme.colors.primary};

@@ -1,0 +1,84 @@
+/* 15 */
+.btn-15 {
+   background:transparent;
+  color: #000;
+  z-index: 1;
+   border: none;
+     /* ✅ 추가: 크기 조절 */
+font-size: 2rem;
+padding: 1rem;
+min-width: 64px;
+min-height: 64px;
+cursor: pointer;
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+   background: #fff;
+  transition: all 0.4s ease;
+}
+
+/* 라이트모드일 때만 검정색으로 override */
+body.light .btn-15:after {
+  background: #1B1D25;
+}
+
+.btn-15:hover {
+  color: #000;
+}
+.btn-15:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+  top: 2px;
+}
+
+
+/* 16 */
+.btn-16 {
+   background:transparent;
+  color: #000;
+  z-index: 1;
+   border: none;
+     /* ✅ 추가: 크기 조절 */
+font-size: 2rem;
+padding: 1rem;
+min-width: 64px;
+min-height: 64px;
+cursor: pointer;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  direction: rtl;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* 라이트모드일 때만 검정색으로 override */
+body.light .btn-16:after {
+  background: #1B1D25;
+}
+
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}

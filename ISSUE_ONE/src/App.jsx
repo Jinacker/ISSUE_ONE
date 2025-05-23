@@ -30,10 +30,15 @@ function App() {
   // ✅ 다크모드 상태
   const [themeMode, setThemeMode] = useState("lightTheme");
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "lightTheme";
-    setThemeMode(savedTheme);
-  }, []);
+useEffect(() => {
+  const savedTheme = localStorage.getItem("theme") || "lightTheme";
+  setThemeMode(savedTheme);
+  document.body.className = savedTheme === "lightTheme" ? "light" : "dark"; // ✅ 추가
+}, []);
+
+useEffect(() => {
+  document.body.className = themeMode === "lightTheme" ? "light" : "dark"; // ✅ 추가
+}, [themeMode]);
 
   const toggleTheme = () => {
     const newTheme = themeMode === "lightTheme" ? "darkTheme" : "lightTheme";

@@ -12,9 +12,6 @@ const Search = () => {
 
   return (
     <div className="page-wrapper">
-      <h1 className="logo-title" onClick={goHome} style={{ cursor: 'pointer' }}>
-        ISSUE ONE
-      </h1>
 
       <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '30px' }}>
         ‘{query}’ 에 대한 조사 결과입니다.

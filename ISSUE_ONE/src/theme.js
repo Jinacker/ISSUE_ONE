@@ -21,7 +21,7 @@ export const darkTheme = {
   colors: {
     colorMain: "#585D6E4d",
     colorBg: "#1B1D25",
-    colorMainFont: "#000000",
+    colorMainFont: "#ffffff",
     colorSkyBlue: "#E6F4FE",
     colorBlue: "#3190ff",
     colorDisabled: "#C4C4C4",
