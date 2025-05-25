@@ -1,6 +1,6 @@
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import '../App.css';
-import Layout from '../layout/layout';
+import Layout from '../layout/Layout';
 
 const Search = () => {
   const [params] = useSearchParams();
