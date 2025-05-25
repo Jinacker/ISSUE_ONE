@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../GlobalStyle";
 
-const Layout = () => {
+const Layout = ({children}) => {
 
 // ✅ 다크모드 상태
 const [themeMode, setThemeMode] = useState("lightTheme");
@@ -33,7 +33,7 @@ useEffect(() => {
       <GlobalStyle />
         <div>
             <Header toggleTheme={toggleTheme} themeMode={themeMode} />
-            <main className = "main">메인</main>
+            <main className = "main">{children}</main>
             <Footer></Footer>
         </div>
     </ThemeProvider>

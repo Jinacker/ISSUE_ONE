@@ -63,7 +63,7 @@ cursor: pointer;
   z-index: -1;
   direction: rtl;
   background: #fff;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 /* 라이트모드일 때만 검정색으로 override */
