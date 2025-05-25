@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import Layout from '../layout/layout';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -19,6 +20,7 @@ const Home = () => {
 
   return (
     <div className="page-wrapper">
+      <Layout>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -29,6 +31,7 @@ const Home = () => {
         />
         <button type="submit">검색</button>
       </form>
+      </Layout>
     </div>
   );
 };
