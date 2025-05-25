@@ -1,3 +1,17 @@
+.header {
+  position: fixed;
+
+
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+  background-clip: padding-box; /* 🔥 일부 브라우저에서 clipping 보정 */
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* ✅ 흐림 경계 숨기기용 그림자 */
+}
+
+
 /* 15 */
 .btn-15 {
    background:transparent;

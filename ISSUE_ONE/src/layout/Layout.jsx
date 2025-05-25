@@ -4,6 +4,7 @@ import { lightTheme, darkTheme } from "../theme";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../GlobalStyle";
+import "./Layout.css"
 
 const Layout = ({ children }) => {
   // ✅ 초기 테마를 localStorage에서 바로 가져와 렌더링 직전부터 반영
@@ -28,10 +29,12 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div>
+      <div className={`layout ${themeMode === "lightTheme" ? "light" : "dark"}`}>
         <Header toggleTheme={toggleTheme} themeMode={themeMode} />
+        <div className = 'wrapper'>
         <main className="main">{children}</main>
         <Footer />
+        </div>
       </div>
     </ThemeProvider>
   );

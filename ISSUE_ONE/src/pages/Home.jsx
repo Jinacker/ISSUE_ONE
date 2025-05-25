@@ -6,12 +6,10 @@ import Layout from '../layout/layout';
 const Home = () => {
 
   return (
-    <div className="page-wrapper">
       <Layout>
       <Searchbar></Searchbar>
       </Layout>
-    </div>
-  );
+     );
 };
 
 export default Home;

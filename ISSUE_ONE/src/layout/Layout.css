@@ -1,0 +1,44 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+.layout.light {
+  background-color: #fff;
+  color: #171717;
+}
+
+.layout.dark {
+  background-color: #1B1D25;
+  color: #f1f1f1;
+}
+
+.wrapper, .main, .footer {
+  background-color: inherit;
+  color: inherit;
+}
+
+
+.layout {
+  min-height: 100vh;     /* 🔥 요거 추가 */
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  width: 100%;
+  height: 90px;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 15px;
+  color: #808080;
+  font-size: 15px;
+}

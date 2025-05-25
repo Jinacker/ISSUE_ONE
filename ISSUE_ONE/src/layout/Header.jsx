@@ -53,7 +53,7 @@ const goHome = () => {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className = "header">
     <button class="custom-btn btn-16" onClick={goHome}
     onMouseEnter={() => setIsReturningHome(true)}
     onMouseLeave={() => setIsReturningHome(false)}
@@ -74,7 +74,26 @@ const goHome = () => {
       : "LIGHT MODE"
     : isReturningHome
       ? "RETURN TO HOME"
-      : "ISSUE ONE"}
+      : (
+        <>
+          ISSUE ONE
+          <div
+            style={{
+              fontSize: "0.8rem",
+              color: themeMode === "lightTheme" ? "#666" : "#aaa",
+              position: "absolute",     // 🔥 공간 차지하지 않음
+              top: "70%",              // 제목 아래에 표시
+              left: "50%",
+              transform: "translateX(-50%)",
+              pointerEvents: "none",   // 클릭 무시
+              whiteSpace: "nowrap",    // 한 줄 유지
+              marginTop: "4px"
+            }}
+          >
+            편향 없는 이슈 요약 플랫폼
+          </div>
+        </>
+      )}
 </Title>
 
 <button
