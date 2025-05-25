@@ -1,5 +1,6 @@
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import '../App.css';
+import Layout from '../layout/layout';
 
 const Search = () => {
   const [params] = useSearchParams();
@@ -11,6 +12,8 @@ const Search = () => {
   };
 
   return (
+
+    <Layout>
     <div className="page-wrapper">
 
       <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '30px' }}>
@@ -45,6 +48,7 @@ const Search = () => {
         연관 이슈 더보기
       </button>
     </div>
+    </Layout>
   );
 };
 
