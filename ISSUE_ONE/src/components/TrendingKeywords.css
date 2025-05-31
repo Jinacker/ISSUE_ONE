@@ -1,0 +1,28 @@
+.trending-keywords-wrapper {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.keyword-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keyword-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
