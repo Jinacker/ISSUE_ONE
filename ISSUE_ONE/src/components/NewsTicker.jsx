@@ -3,7 +3,7 @@ import { newsLogos } from '../utils/newsLogos';
 
 const NewsTicker = () => {
   const entries = Object.entries(newsLogos);
-  const fullLogos = [...entries, ...entries]; // 2배 복제
+  const fullLogos = [...entries, ...entries,...entries]; // 2배 복제
 
   return (
     <div className="news-ticker-wrapper">
