@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Home from "./pages/Home";
@@ -9,10 +9,7 @@ import LoadingSearch from "./pages/LoadingSearch";
 
 function App() {
   const nav = useNavigate();
-
-  const onClickButton = () => {
-    nav("/search");
-  };
+  const location = useLocation();
 
   const [query, setQuery] = useState("");
 
@@ -23,6 +20,19 @@ function App() {
     }
   };
 
+  // ✅ 뒤로 가기 방지
+  useEffect(() => {
+    const handlePopState = () => {
+      // 뒤로 가기 눌러도 현재 경로 유지
+      nav(location.pathname, { replace: true });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [nav, location]);
+
   return (
     <div>
       <Routes>
@@ -31,8 +41,9 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
-      </div>
+    </div>
   );
 }
+
 // 빌드 3
 export default App;
