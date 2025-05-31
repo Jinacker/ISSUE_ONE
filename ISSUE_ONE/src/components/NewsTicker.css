@@ -1,0 +1,38 @@
+.news-ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+  background: transparent;
+  z-index: 1;
+  position: relative;
+}
+
+.news-ticker-track {
+  display: flex;
+  animation: scroll 60s linear infinite;
+  white-space: nowrap;
+
+  /* ✅ 핵심: 뷰포트보다 커지지 않게 제한 */
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.logo-container {
+  display: inline-block;
+  padding: 0 30px;
+}
+
+.logo-container img {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* 무한 스크롤 효과 */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
