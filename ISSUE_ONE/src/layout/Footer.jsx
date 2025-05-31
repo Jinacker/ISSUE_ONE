@@ -14,6 +14,7 @@ const Footer = () => {
     <span>Copyright 2025. KSEB_4th_E_Team.</span><br/>
     <span>All rights reserved. <AiOutlineSmile></AiOutlineSmile></span><br></br>
     </p>
+    <br></br>
     </div>
   )
 }
