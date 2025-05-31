@@ -1,25 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Searchbar.css";
 
 const Searchbar = () => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const nav = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsActive(true), 200); // 자연스러운 진입 애니메이션
+    const timer = setTimeout(() => setIsActive(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!query.trim()) {
-      setError(true); // 공백만 입력하면 에러
-    } else {
-      setError(false);
-      nav(`/search?q=${encodeURIComponent(query)}`);
+      setError(true);
+      return;
+    }
+
+    setError(false);
+    setLoading(true);
+
+    try {
+      const res = await axios.get(
+        'https://ai-api-1w85.onrender.com/api/search',
+        {
+          params: { q: query },
+        }
+      );
+
+      console.log("검색 결과:", res.data);
+
+      nav(`/search?q=${encodeURIComponent(query)}`, {
+        state: { results: res.data },
+      });
+
+    } catch (err) {
+      console.error("검색 요청 실패:", err);
+      alert("검색 요청 중 오류가 발생했습니다.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,8 +64,9 @@ const Searchbar = () => {
         <button
           type="submit"
           className={`search-btn ${isActive ? "active" : ""}`}
+          disabled={loading}
         >
-          <span>Search</span>
+          <span>{loading ? "검색 중..." : "Search"}</span>
         </button>
       </form>
     </div>
