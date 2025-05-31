@@ -1,6 +1,7 @@
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import Layout from '../layout/Layout';
 import './Search.css';
+import { newsLogos } from '../utils/newsLogos';
 
 const Search = () => {
   const [params] = useSearchParams();
@@ -23,15 +24,30 @@ const Search = () => {
         </h2>
 
         {/* 기사 요약 카드 */}
-        <div className="summary-grid">
-          {results?.articles?.map((article, i) => (
-            <div className="summary-box" key={i}>
-              <h3>신문사 {String.fromCharCode(65 + i)}</h3>
-              <h4>{article.title}</h4>
-              <p>{article.summary}</p>
+      <div className="summary-grid">
+        {results?.articles?.map((article, i) => (
+          <div className="summary-box" key={i}>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+              <img
+                src={newsLogos[article.source] || "/logos/default.png"}
+                alt={article.source}
+                style={{ width: "30px", height: "30px", objectFit: "contain", marginRight: "10px" }}
+              />
+              <h3 style={{ margin: 0 }}>{article.source}</h3>
             </div>
-          ))}
-        </div>
+            <h4>{article.title}</h4>
+            <p>{article.summary}</p>
+            <a
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="read-more-button"
+            >
+              원문 보기 →
+            </a>
+          </div>
+        ))}
+      </div>
 
         {/* 종합 결론 */}
         <div className="summary-conclusion">
