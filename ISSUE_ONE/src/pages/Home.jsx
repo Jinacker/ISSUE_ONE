@@ -10,8 +10,15 @@ const Home = () => {
   return (
       <Layout>
       <Searchbar></Searchbar>
-      <TrendingKeywords></TrendingKeywords>
-        <h2 style={{ marginLeft: '40px' }}>📰 함께하는 언론사</h2>
+          <h2 style={{
+          textAlign: 'center',
+          fontSize: '1rem',
+          margin: '1rem 0'
+          }}>
+        🔍 지금 가장 많이 언급된 키워드
+        </h2>
+        <TrendingKeywords></TrendingKeywords>
+        <h3 style={{ marginLeft: '40px' }}>📰 함께하는 언론사</h3>
         <NewsTicker />
       </Layout>
      );

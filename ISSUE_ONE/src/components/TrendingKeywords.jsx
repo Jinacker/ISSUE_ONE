@@ -1,62 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
 import './TrendingKeywords.css';
+import { useNavigate } from 'react-router-dom';
+
+// 🔹 백엔드 연결 전이므로 더미 데이터 사용
+const dummyKeywords = [
+  { keyword: "대선", count: 14 },
+  { keyword: "투표", count: 12 },
+  { keyword: "후보", count: 10 },
+  { keyword: "네이버", count: 8 },
+  { keyword: "관리", count: 7 }
+];
 
 const TrendingKeywords = () => {
-  const [keywords, setKeywords] = useState([]);
+  const keywords = dummyKeywords;
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('https://ai-api-1w85.onrender.com/trending-keywords')
-      .then((res) => {
-        const data = res.data.keywords || [];
-
-        // fontSize, 위치 계산
-        const counts = data.map(k => k.count);
-        const min = Math.min(...counts);
-        const max = Math.max(...counts);
-
-        const scaled = data.map(k => {
-          const size = max === min
-            ? 32
-            : 16 + ((k.count - min) / (max - min)) * 32;
-          return {
-            ...k,
-            fontSize: size,
-            top: `${Math.random() * 80 + 5}%`,
-            left: `${Math.random() * 80 + 5}%`
-          };
-        });
-
-        setKeywords(scaled);
-      })
-      .catch((err) => {
-        console.error('추천 키워드 불러오기 실패:', err);
-      });
-  }, []);
+  const maxCount = Math.max(...keywords.map(k => k.count), 1);
 
   const handleClick = (kw) => {
     navigate(`/search?q=${encodeURIComponent(kw)}`);
   };
 
   return (
-    <div className="floating-keywords-container">
-      {keywords.map((kw, idx) => (
-        <div
-          key={idx}
-          className="floating-keyword"
-          onClick={() => handleClick(kw.keyword)}
-          style={{
-            fontSize: `${kw.fontSize}px`,
-            top: kw.top,
-            left: kw.left
-          }}
-        >
-          {kw.keyword}
-        </div>
-      ))}
+    <div className="floating-keywords-wrapper">
+      {keywords.map((k, i) => {
+        const scale = Math.pow(k.count / maxCount, 2);  // ✅ 크레센도 효과
+        const size = 60 + scale * 90;  // ✅ 전체적으로 큼직하게
+        const gray = Math.round(255 - scale * 130); // ✅ 진한 모노톤
+        const style = {
+          width: `${size}px`,
+          height: `${size}px`,
+          fontSize: `${20 + scale * 16}px`,
+          backgroundColor: `rgb(${gray}, ${gray}, ${gray})`,
+          color: gray < 120 ? '#fff' : '#000',
+          animationDelay: `${i * 0.2}s`,
+        };
+
+        return (
+          <div
+            key={i}
+            className="floating-keyword"
+            style={style}
+            onClick={() => handleClick(k.keyword)}
+          >
+            {k.keyword}
+          </div>
+        );
+      })}
     </div>
   );
 };
