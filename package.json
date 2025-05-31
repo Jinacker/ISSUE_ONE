@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KSEB-4-E/FE/issues"
   },
-  "homepage": "https://github.com/KSEB-4-E/FE#readme"
+  "homepage": "https://github.com/KSEB-4-E/FE#readme",
+  "dependencies": {
+    "react-spinners": "^0.17.0"
+  }
 }

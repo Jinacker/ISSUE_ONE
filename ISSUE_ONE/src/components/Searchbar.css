@@ -27,7 +27,7 @@
 .search-scope .search-btn,
 .search-scope .search-btn:before,
 .search-scope .search-btn:after {
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .search-scope .search-bar input,
