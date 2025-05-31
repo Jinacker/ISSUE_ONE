@@ -28,9 +28,9 @@ const Searchbar = () => {
 
     try {
       const res = await axios.get(
-        'https://ai-api-1w85.onrender.com/api/search',
+        'https://ai-api-1w85.onrender.com/search-articles', 
         {
-          params: { q: query },
+          params: { keyword: query },
         }
       );
 
