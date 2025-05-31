@@ -17,7 +17,6 @@ const Searchbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!query.trim()) {
       setError(true);
       return;
@@ -27,16 +26,11 @@ const Searchbar = () => {
     setLoading(true);
 
     try {
-      const res = await axios.get(
-        'https://ai-api-1w85.onrender.com/search-articles', 
-        {
-          params: { keyword: query },
-        }
-      );
+      const res = await axios.get('https://ai-api-1w85.onrender.com/search-articles', {
+        params: { keyword: query },
+      });
 
-      console.log("검색 결과:", res.data);
-
-      nav(`/search?q=${encodeURIComponent(query)}`, {
+      nav(`/loading?q=${encodeURIComponent(query)}`, {
         state: { results: res.data },
       });
 
@@ -61,11 +55,7 @@ const Searchbar = () => {
           style={{ borderColor: error ? "red" : undefined }}
           placeholder="... 키워드를 입력해주세요."
         />
-        <button
-          type="submit"
-          className={`search-btn ${isActive ? "active" : ""}`}
-          disabled={loading}
-        >
+        <button type="submit" className={`search-btn ${isActive ? "active" : ""}`} disabled={loading}>
           <span>{loading ? "검색 중..." : "Search"}</span>
         </button>
       </form>

@@ -1,0 +1,11 @@
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: inherit;  /* ✅ layout의 배경 상속 */
+  color: inherit;             /* ✅ 글자색 상속 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

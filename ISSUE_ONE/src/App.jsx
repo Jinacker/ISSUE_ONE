@@ -3,9 +3,9 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Home from "./pages/Home";
-import Loading from "./pages/Loading";
 import Search from "./pages/Search";
 import Notfound from "./pages/Notfound";
+import LoadingSearch from "./pages/LoadingSearch";
 
 function App() {
   const nav = useNavigate();
@@ -27,7 +27,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/load" element={<Loading />} />
+        <Route path="/loading" element={<LoadingSearch />} />
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
