@@ -1,28 +1,26 @@
-.trending-keywords-wrapper {
-  margin: 40px auto;
-  text-align: center;
+.floating-keywords-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: transparent;
 }
 
-.keyword-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.keyword-btn {
-  background-color: #f0f0f0;
-  color: #333;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 20px;
-  font-size: 14px;
+.floating-keyword {
+  position: absolute;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 0.3s ease, color 0.3s ease;
+  animation: float 6s ease-in-out infinite;
 }
 
-.keyword-btn:hover {
-  background-color: #007bff;
-  color: white;
+.floating-keyword:hover {
+  transform: scale(1.2);
+  color: #ff6b6b;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
