@@ -15,7 +15,7 @@ const Home = () => {
           fontSize: '1rem',
           margin: '1rem 0'
           }}>
-        🔍 지금 가장 많이 언급된 키워드
+        🔥 지금 가장 많이 언급된 키워드
         </h2>
         <TrendingKeywords></TrendingKeywords>
         <h3 style={{ marginLeft: '40px' }}>📰 함께하는 언론사</h3>
