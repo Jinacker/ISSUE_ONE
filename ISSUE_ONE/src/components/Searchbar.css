@@ -22,154 +22,86 @@
   justify-content: center;
 }
 
-.search-scope .search-bar input,
-.search-scope .search-btn,
-.search-scope .search-btn:before,
-.search-scope .search-btn:after {
-  transition: all 0.3s ease-out;
-}
-
-.search-scope .search-bar input,
-.search-scope .search-btn {
-  width: 3em;
-  height: 3em;
-}
-
-.search-scope .search-bar input:invalid:not(:focus),
-.search-scope .search-btn {
-  cursor: pointer;
-}
-
-.search-scope .search-bar,
-.search-scope .search-bar input:focus,
-.search-scope .search-bar input:valid {
-  width: 100%;
-}
-
-.search-scope .search-bar input:focus,
-.search-scope .search-bar input:not(:focus) + .search-btn:focus {
-  outline: transparent;
-}
-
+/* 입력창 */
 .search-scope .search-bar input {
-  background: transparent;
-  border-radius: 1.5em;
-  box-shadow: 0 0 0 0.4em #171717 inset;
-  padding: 0.75em;
-  transform: translate(0.5em, 0.5em) scale(0.5);
-  transform-origin: 100% 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.search-scope .search-bar input::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/* ✅ 자동 활성화 클래스 추가 */
-.search-scope .search-bar input:focus,
-.search-scope .search-bar input:valid,
-.search-scope .search-bar input.active {
+  flex: 1;
   background: #fff;
   border-radius: 0.375em 0 0 0.375em;
   box-shadow: 0 0 0 0.1em #d9d9d9 inset;
-  transform: scale(1);
+  padding: 0.75em;
+  color: #333;
+  appearance: none;
+  font-size: 16px;
 }
 
 /* 버튼 */
 .search-scope .search-btn {
-  background: #171717;
-  border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
-  padding: 0.75em;
-  position: relative;
-  transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
-  transform-origin: 0 50%;
+  background: #6a6969;  /* ✅ 다크 그레이 */
+  border-radius: 0 0.375em 0.375em 0;
+  padding: 0.75em 1.2em;
+  color: white;
+  font-size: 18px;
+  border-left: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* 버튼 텍스트 대신 돋보기 아이콘 */
+.search-scope .search-btn::before {
+  content: '🔍';
+  font-size: 18px;
+}
+
+/* 기존 span 등 제거 */
+.search-scope .search-btn span {
+  display: none;
+}
 .search-scope .search-btn:before,
 .search-scope .search-btn:after {
-  content: "";
-  display: block;
-  opacity: 0;
-  position: absolute;
+  display: none;
 }
 
-.search-scope .search-btn:before {
-  border-radius: 50%;
-  box-shadow: 0 0 0 0.2em #f1f1f1 inset;
-  top: 0.75em;
-  left: 0.75em;
-  width: 1.2em;
-  height: 1.2em;
-}
+/* 반응형 대응 */
+@media screen and (max-width: 480px) {
+  .search-scope {
+    padding-top: 3rem;
+  }
 
-.search-scope .search-btn:after {
-  background: #f1f1f1;
-  border-radius: 0 0.25em 0.25em 0;
-  top: 51%;
-  left: 51%;
-  width: 0.75em;
-  height: 0.25em;
-  transform: translate(0.2em, 0) rotate(45deg);
-  transform-origin: 0 50%;
-}
+  .search-scope .search-bar {
+    padding: 3em;
+  }
 
-.search-scope .search-btn span {
-  display: inline-block;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-}
+  .search-scope .search-bar input {
+    font-size: 14px;
+  }
 
-/* ✅ 버튼 활성화 상태 추가 */
-.search-scope .search-bar input:focus + .search-btn,
-.search-scope .search-bar input:valid + .search-btn,
-.search-scope .search-bar input.active + .search-btn {
-  background: grey;
-  border-radius: 0 0.375em 0.375em 0;
-  transform: scale(1);
-}
+  .search-scope .search-btn {
+    font-size: 14px;
+    padding: 0.6em 1.2em;
+  }
 
-.search-scope .search-bar input:focus + .search-btn:before,
-.search-scope .search-bar input:focus + .search-btn:after,
-.search-scope .search-bar input:valid + .search-btn:before,
-.search-scope .search-bar input:valid + .search-btn:after,
-.search-scope .search-bar input.active + .search-btn:before,
-.search-scope .search-bar input.active + .search-btn:after {
-  opacity: 1;
-}
-
-.search-scope .search-bar input:focus + .search-btn:hover,
-.search-scope .search-bar input:valid + .search-btn:hover,
-.search-scope .search-bar input:valid:not(:focus) + .search-btn:focus {
-  background: darkgrey;
-}
-
-.search-scope .search-bar input:focus + .search-btn:active,
-.search-scope .search-bar input:valid + .search-btn:active {
-  transform: translateY(1px);
+  .search-scope .search-btn::before {
+    font-size: 16px;
+  }
 }
 
 /* 다크모드 대응 */
 @media screen and (prefers-color-scheme: dark) {
   .search-scope {
     color: #f1f1f1;
-    background: #171717;
+    background: #3d3d3d;
   }
 
   .search-scope .search-bar input {
-    box-shadow: 0 0 0 0.4em #f1f1f1 inset;
-  }
-
-  .search-scope .search-bar input:focus,
-  .search-scope .search-bar input:valid,
-  .search-scope .search-bar input.active {
     background: #3d3d3d;
     box-shadow: 0 0 0 0.1em #3d3d3d inset;
+    color: #f1f1f1;
   }
 
   .search-scope .search-btn {
-    background: #f1f1f1;
+    background: #444;  /* ✅ 다크모드에서도 어두운 버튼 */
+    color: #fff;
   }
 }

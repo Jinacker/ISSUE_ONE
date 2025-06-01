@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Searchbar.css";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const Searchbar = () => {
   const [query, setQuery] = useState('');
@@ -55,9 +56,9 @@ const Searchbar = () => {
           style={{ borderColor: error ? "red" : undefined }}
           placeholder="... 키워드를 입력해주세요."
         />
-        <button type="submit" className={`search-btn ${isActive ? "active" : ""}`} disabled={loading}>
-          <span>{loading ? "검색 중..." : "Search"}</span>
-        </button>
+          <button type="submit" className="search-btn">
+            <HiOutlineSearch />
+          </button>
       </form>
     </div>
   );

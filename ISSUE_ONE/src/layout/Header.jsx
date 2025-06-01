@@ -4,9 +4,7 @@ import "./Header.css";
 import { IoSunny, IoMoonSharp } from "react-icons/io5";
 import { IoIosHome } from "react-icons/io";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   width: 100vw;
@@ -26,85 +24,83 @@ const Title = styled.div`
   font-size: 3rem;
   font-weight: bold;
   z-index: 100;
+  position: relative;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
-const ToggleButton = styled.button`
-  background-color:transparent;
-  color: ${({ theme }) => theme.colors.colorWhite};
-  border: none;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-  font-size: 3rem;
+const Subtitle = styled.div`
+  font-size: 0.8rem;
+  color: ${({ theme }) =>
+    theme.colors.colorMainFont === "#000" ? "#666" : "#aaa"};
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  margin-top: 12px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.65rem;
+  }
 `;
-
-
-//////////////////
-
 
 const Header = ({ toggleTheme, themeMode }) => {
+  const [isHovering, setIsHovering] = useState(false);
+  const [isReturningHome, setIsReturningHome] = useState(false);
+  const navigate = useNavigate();
+  const iconColor = themeMode === "lightTheme" ? "#000" : "#fff";
 
-const [isHovering, setIsHovering] = useState(false);
-const navigate = useNavigate();
-const [isReturningHome, setIsReturningHome] = useState(false);
-const iconColor = themeMode === "lightTheme" ? "#000" : "#fff";
-
-const goHome = () => {
-    navigate('/');
+  const goHome = () => {
+    navigate("/");
   };
 
   return (
-    <HeaderContainer className = "header">
-    <button class="custom-btn btn-16" onClick={goHome}
-    onMouseEnter={() => setIsReturningHome(true)}
-    onMouseLeave={() => setIsReturningHome(false)}
-    ><IoIosHome style={{ color: iconColor }} ></IoIosHome></button>
+    <HeaderContainer className="header">
+      <button
+        className="custom-btn btn-16"
+        onClick={goHome}
+        onMouseEnter={() => setIsReturningHome(true)}
+        onMouseLeave={() => setIsReturningHome(false)}
+      >
+        <IoIosHome style={{ color: iconColor }} />
+      </button>
 
+      <Title
+        style={{
+          color:
+            isHovering || isReturningHome
+              ? themeMode === "lightTheme"
+                ? "#fff"
+                : "#000"
+              : undefined,
+        }}
+      >
+        {isHovering
+          ? themeMode === "lightTheme"
+            ? "DARK MODE"
+            : "LIGHT MODE"
+          : isReturningHome
+          ? "RETURN TO HOME"
+          : "ISSUE ONE"}
+        <Subtitle>편향 없는 이슈 요약 플랫폼</Subtitle>
+      </Title>
 
-<Title style={{
-  color:
-    isHovering || isReturningHome
-      ? themeMode === "lightTheme"
-        ? "#fff"
-        : "#000"
-      : undefined
-}}>
-  {isHovering
-    ? themeMode === "lightTheme"
-      ? "DARK MODE"
-      : "LIGHT MODE"
-    : isReturningHome
-      ? "RETURN TO HOME"
-      : (
-        <>
-          ISSUE ONE
-          <div
-            style={{
-              fontSize: "0.8rem",
-              color: themeMode === "lightTheme" ? "#666" : "#aaa",
-              position: "absolute",     // 🔥 공간 차지하지 않음
-              top: "70%",              // 제목 아래에 표시
-              left: "50%",
-              transform: "translateX(-50%)",
-              pointerEvents: "none",   // 클릭 무시
-              whiteSpace: "nowrap",    // 한 줄 유지
-              marginTop: "4px"
-            }}
-          >
-            편향 없는 이슈 요약 플랫폼
-          </div>
-        </>
-      )}
-</Title>
-
-<button
-  className="custom-btn btn-15"
-  onClick={toggleTheme}
-  onMouseEnter={() => setIsHovering(true)}
-  onMouseLeave={() => setIsHovering(false)}
->
-  {themeMode === "lightTheme" ? <IoMoonSharp style={{ color: iconColor }} /> : <IoSunny style={{ color: iconColor }} />}
-</button>
-
+      <button
+        className="custom-btn btn-15"
+        onClick={toggleTheme}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {themeMode === "lightTheme" ? (
+          <IoMoonSharp style={{ color: iconColor }} />
+        ) : (
+          <IoSunny style={{ color: iconColor }} />
+        )}
+      </button>
     </HeaderContainer>
   );
 };
