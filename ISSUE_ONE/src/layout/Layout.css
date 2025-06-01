@@ -60,3 +60,26 @@ html, body, #root {
   text-align: left;
   overflow-x: hidden; /* ✅ 추가 */
 }
+
+@media screen and (max-width: 768px) {
+  .header-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .header-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .btn-15,
+  .btn-16 {
+    font-size: 1.2rem;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0.5rem;
+  }
+
+  .search-scope .search-bar input {
+    font-size: 16px !important;
+  }
+}
