@@ -1,8 +1,8 @@
 import React from 'react';
 import './TrendingKeywords.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-// 🔹 백엔드 연결 전이므로 더미 데이터 사용
 const dummyKeywords = [
   { keyword: "대선", count: 14 },
   { keyword: "투표", count: 12 },
@@ -16,16 +16,27 @@ const TrendingKeywords = () => {
   const navigate = useNavigate();
   const maxCount = Math.max(...keywords.map(k => k.count), 1);
 
-  const handleClick = (kw) => {
-    navigate(`/search?q=${encodeURIComponent(kw)}`);
+  const handleClick = async (kw) => {
+    try {
+      const res = await axios.get('https://ai-api-1w85.onrender.com/search-articles', {
+        params: { keyword: kw },
+      });
+
+      navigate(`/loading?q=${encodeURIComponent(kw)}`, {
+        state: { results: res.data },
+      });
+    } catch (err) {
+      console.error("트렌드 검색 실패:", err);
+      alert("검색 요청 중 오류가 발생했습니다.");
+    }
   };
 
   return (
     <div className="floating-keywords-wrapper">
       {keywords.map((k, i) => {
-        const scale = Math.pow(k.count / maxCount, 2);  // ✅ 크레센도 효과
-        const size = 60 + scale * 90;  // ✅ 전체적으로 큼직하게
-        const gray = Math.round(255 - scale * 130); // ✅ 진한 모노톤
+        const scale = Math.pow(k.count / maxCount, 2);
+        const size = 60 + scale * 90;
+        const gray = Math.round(255 - scale * 130);
         const style = {
           width: `${size}px`,
           height: `${size}px`,
