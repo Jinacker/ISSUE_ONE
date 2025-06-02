@@ -1,4 +1,5 @@
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'; // ✅ 중요
 import Layout from '../layout/Layout';
 import './Search.css';
 import { newsLogos } from '../utils/newsLogos';
@@ -35,6 +36,20 @@ const Search = () => {
   const query = params.get('q');
   const results = location.state?.results;
   const summary = location.state?.conclusion;
+
+  // ✅ 렌더링 직후 최상단으로 스크롤 (진짜 최종 보장)
+useEffect(() => {
+  const selectors = ['.main', '.wrapper', '.layout', '#root', 'body', 'html'];
+  selectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el && el.scrollTop > 0) {
+      el.scrollTop = 0;
+    }
+  });
+
+  window.scrollTo({ top: 0 });
+}, []);
+
 
   return (
     <Layout>
