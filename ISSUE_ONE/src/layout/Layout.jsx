@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div className={`layout ${themeMode === "lightTheme" ? "light" : "dark"}`}>
-        <Header toggleTheme={toggleTheme} themeMode={themeMode} />
+        <Header className="header" toggleTheme={toggleTheme} themeMode={themeMode} />
         <div className="wrapper">
           <main className="main" ref={mainRef}>
             {children}

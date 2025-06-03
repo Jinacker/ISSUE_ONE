@@ -15,7 +15,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   box-shadow: ${({ theme }) => theme.colors.colorShadow};
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
 `;
