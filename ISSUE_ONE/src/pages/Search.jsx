@@ -33,9 +33,12 @@ const Search = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+
+
   const query = params.get('q');
   const results = location.state?.results;
   const summary = location.state?.conclusion;
+  
 
   // ✅ 렌더링 직후 최상단으로 스크롤 (진짜 최종 보장)
 useEffect(() => {

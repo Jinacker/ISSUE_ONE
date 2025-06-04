@@ -27,7 +27,7 @@ const Searchbar = () => {
     setLoading(true);
 
     try {
-      const res = await axios.get('https://ai-api-1w85.onrender.com/search-articles', {
+      const res = await axios.get('https://ai-news-api-fmph.onrender.com/search-articles', {
         params: { keyword: query },
       });
 
