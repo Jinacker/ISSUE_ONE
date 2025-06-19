@@ -30,7 +30,7 @@ const LoadingSearch = () => {
     if (results?.articles?.length > 0 && query) {
       const contents = results.articles.slice(0, 3).map((a) => a.content);
       axios
-        .post('https://ai-news-api-fmph.onrender.com/summarize-conclusion', {
+        .post('https://ai-news-api-2.onrender.com/summarize-conclusion', {
           keyword: query,
           contents,
         })
