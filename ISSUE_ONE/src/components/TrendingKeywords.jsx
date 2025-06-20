@@ -10,7 +10,7 @@ const TrendingKeywords = () => {
   useEffect(() => {
     const fetchKeywords = async () => {
       try {
-        const res = await axios.get('https://ai-news-api-2.onrender.com/trending-keywords');
+        const res = await axios.get('https://ai-news-api-fmph.onrender.com/trending-keywords');
         setKeywords(res.data.keywords || []);
       } catch (err) {
         console.error("키워드 로딩 실패:", err);
@@ -25,7 +25,7 @@ const TrendingKeywords = () => {
 
   const handleClick = async (kw) => {
     try {
-      const res = await axios.get('https://ai-news-api-2.onrender.com/search-articles', {
+      const res = await axios.get('https://ai-news-api-fmph.onrender.com/search-articles', {
         params: { keyword: kw },
       });
 
